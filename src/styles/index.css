@@ -8,11 +8,32 @@ body {
 header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 60px;
   padding: 0 20px;
   background-color: #7998c9;
   color: #fff;
+}
+header .marker-indicator {
+  padding-right: 25px;
+  position: relative;
+}
+header .marker-indicator:after {
+  position: absolute;
+  right: 0;
+  top: 4px;
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+header .marker-indicator:not(.found):after {
+  background-color: #e97778;
+  box-shadow: 0 0 3px 3px #ea7e7f;
+}
+header .marker-indicator.found:after {
+  background-color: #89c793;
+  box-shadow: 0 0 3px 3px lignten(#89c793, 5%);
 }
 .scene {
   height: calc(100vh - 60px);

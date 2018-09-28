@@ -1,7 +1,7 @@
 header
   display flex
   align-items center
-  justify-content flex-start
+  justify-content space-between
 
   height 60px
   padding 0 20px
@@ -9,3 +9,23 @@ header
   background-color $blue
 
   color white
+
+  .marker-indicator
+    padding-right 25px
+    position relative
+    &:after
+      position absolute
+      right 0
+      top 4px
+      content ''
+      width 15px
+      height 15px
+      border-radius 50%
+
+    &:not(.found):after
+      background-color #E97778
+      box-shadow: 0 0 3px 3px lighten(#E97778, 5%)
+
+    &.found:after
+      background-color #89C793
+      box-shadow: 0 0 3px 3px lignten(#89C793, 5%)
