@@ -7,20 +7,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      markerFound: false,
+      hiroFound: false,
+      kanjiFound: false,
     }
   }
 
-  onMarkerStateChange = (isFound = false) => {
-    console.log('marker state changes to ' + isFound);
-    this.setState({ markerFound: isFound });
+  onMarkerStateChange = (type, isFound = false) => {
+    this.setState({ [`${type}Found`]: isFound });
   }
 
   render() {
     return (
       <div className="App">
         <Header
-          markerFound={this.state.markerFound}
+          markers={{
+            hiro: this.state.hiroFound,
+            kanji: this.state.kanjiFound,
+          }}
         />
         <Scene
           onMarkerStateChange={this.onMarkerStateChange}

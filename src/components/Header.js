@@ -4,9 +4,15 @@ const Header = (props) => (
   <header>
     <span className="heading">AR App</span>
 
-    <span className={`marker-indicator ${props.markerFound ? 'found' : ''}`}>
-      Marker:
-    </span>
+    <div className="marker-indicators">
+      <span className={`marker-indicator ${props.markers.hiro ? 'found' : ''}`}>
+        Hiro:
+      </span>
+
+      <span className={`marker-indicator ${props.markers.kanji ? 'found' : ''}`}>
+        Kanji:
+      </span>
+    </div>
   </header>
 );
 

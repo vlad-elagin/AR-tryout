@@ -33,7 +33,10 @@ header .marker-indicator:not(.found):after {
 }
 header .marker-indicator.found:after {
   background-color: #89c793;
-  box-shadow: 0 0 3px 3px lignten(#89c793, 5%);
+  box-shadow: 0 0 3px 3px #8fca98;
+}
+header .marker-indicator:first-of-type {
+  margin-right: 20px;
 }
 .scene {
   height: calc(100vh - 60px);
