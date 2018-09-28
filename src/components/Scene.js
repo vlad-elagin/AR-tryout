@@ -6,10 +6,10 @@ class SceneWrapper extends React.Component {
   componentDidMount() {
     // init marker listeners
     const marker = document.querySelector('a-marker');
-    console.dir(marker)
     marker.addEventListener('markerFound', () => this.props.onMarkerStateChange(true));
     marker.addEventListener('markerLost', () => this.props.onMarkerStateChange());
   }
+
   render() {
     return (
       <div
@@ -22,13 +22,16 @@ class SceneWrapper extends React.Component {
             primitive="a-marker"
             preset="hiro"
           >
-            {/* <Entity
+            <Entity
               primitive="a-obj-model"
-              src="/models/railroad-obj/Rails.obj"
-              scale="0.003 0.003 0.003"
-            /> */}
+              src="/models/railroad-obj/railroad.obj"
+              mtl="/models/railroad-obj/railroad.mtl"
+              scale="0.0002 0.0002 0.0002"
+              rotation="-90 0 0"
+              position="0 -0.5 0"
+            />
 
-            <Text value="sup" color="red" align="center" position="0 0 0.3" />
+            {/* <Text value="sup" color="red" align="center" position="0 0 0.3" /> */}
           </Entity>
 
           <Camera position="0 0 0.5"/>
