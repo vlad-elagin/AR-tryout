@@ -13,6 +13,11 @@ class App extends Component {
   }
 
   onMarkerStateChange = (type, isFound = false) => {
+    // DEBUG
+    if (type === "hiro" && isFound) {
+      console.dir(document.querySelector('a-marker[preset="hiro"]'));
+    }
+
     this.setState({ [`${type}Found`]: isFound });
   }
 
@@ -27,6 +32,10 @@ class App extends Component {
         />
         <Scene
           onMarkerStateChange={this.onMarkerStateChange}
+          markers={{
+            hiro: this.state.hiroFound,
+            kanji: this.state.kanjiFound,
+          }}
         />
       </div>
     );
