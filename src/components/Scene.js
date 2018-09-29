@@ -1,6 +1,5 @@
 import React from 'react';
-import { Scene, Entity, Text, Camera } from 'react-aframe-ar';
-import { getLineParams } from '../helpers';
+import { Scene, Entity, Text, Camera, Sphere } from 'react-aframe-ar';
 /* <Entity
   primitive="a-obj-model"
   src="/models/railroad-obj/railroad.obj"
@@ -9,6 +8,8 @@ import { getLineParams } from '../helpers';
   rotation="-90 0 0"
   position="0 -0.5 0"
 /> */
+
+/* <Text value="hi i am hiro" color="red" align="center" position="0 0 0.0.1" rotation="-90px 0 0" /> */
 
 class SceneWrapper extends React.Component {
 
@@ -37,8 +38,9 @@ class SceneWrapper extends React.Component {
             primitive="a-marker"
             preset="hiro"
             size={0.18}
+            line-position-updater="target: #line"
           >
-            <Text value="hi i am hiro" color="red" align="center" position="0 0 0.0.1" rotation="-90px 0 0" />
+            <Sphere radius={0.1} color="red"></Sphere>
           </Entity>
 
           {/* Set up Marker B */}
@@ -46,17 +48,16 @@ class SceneWrapper extends React.Component {
             primitive="a-marker"
             preset="kanji"
             size={0.18}
+            line-position-updater="target: #line;"
           >
-            <Text value="hi i am kanji" color="green" align="center" position="0 0 0.01" rotation="-90px 0 0" />
+            <Sphere radius={0.1} color="green"></Sphere>
           </Entity>
 
           {/* Draw line between markers */}
-          {
-            this.props.markers.hiro && this.props.markers.kanji &&
-            <Entity
-              line={getLineParams(this.hiroMarker, this.kanjiMarker, 'yellow')}
-            />
-          }
+          <Entity
+            id="line"
+            markers-dependent={this.props.markers.hiro && this.props.markers.kanji}
+          />
 
           <Camera position="0 0 0.5"/>
         </Scene>

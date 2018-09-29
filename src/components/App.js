@@ -13,11 +13,6 @@ class App extends Component {
   }
 
   onMarkerStateChange = (type, isFound = false) => {
-    // DEBUG
-    if (type === "hiro" && isFound) {
-      console.dir(document.querySelector('a-marker[preset="hiro"]'));
-    }
-
     this.setState({ [`${type}Found`]: isFound });
   }
 
