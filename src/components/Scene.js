@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scene, Entity, Text, Camera, Sphere } from 'react-aframe-ar';
+import { Scene, Entity, Camera, Sphere, Text } from 'react-aframe-ar';
 /* <Entity
   primitive="a-obj-model"
   src="/models/railroad-obj/railroad.obj"
@@ -38,7 +38,7 @@ class SceneWrapper extends React.Component {
             primitive="a-marker"
             preset="hiro"
             size={0.18}
-            line-position-updater="target: #line"
+            line-position-updater="target: #line; textNode: #distance"
           >
             <Sphere radius={0.1} color="red"></Sphere>
           </Entity>
@@ -48,15 +48,25 @@ class SceneWrapper extends React.Component {
             primitive="a-marker"
             preset="kanji"
             size={0.18}
-            line-position-updater="target: #line;"
+            line-position-updater="target: #line; textNode: #distance"
           >
             <Sphere radius={0.1} color="green"></Sphere>
           </Entity>
 
-          {/* Draw line between markers */}
+          {/* Components for measuring distance between markers */}
           <Entity
             id="line"
-            markers-dependent={this.props.markers.hiro && this.props.markers.kanji}
+            visible={this.props.markers.hiro && this.props.markers.kanji}
+          />
+          <Text
+            id="distance"
+            color="red"
+            align="center"
+            rotation="-90 0 0"
+            value="hello"
+            scale="2 2 2"
+            // visible={this.props.markers.hiro && this.props.markers.kanji}
+            position="0 0 0.3"
           />
 
           <Camera position="0 0 0.5"/>

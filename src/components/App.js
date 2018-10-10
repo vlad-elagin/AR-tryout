@@ -17,20 +17,18 @@ class App extends Component {
   }
 
   render() {
+    const markers = {
+      hiro: this.state.hiroFound,
+      kanji: this.state.kanjiFound,
+    };
     return (
       <div className="App">
         <Header
-          markers={{
-            hiro: this.state.hiroFound,
-            kanji: this.state.kanjiFound,
-          }}
+          markers={markers}
         />
         <Scene
           onMarkerStateChange={this.onMarkerStateChange}
-          markers={{
-            hiro: this.state.hiroFound,
-            kanji: this.state.kanjiFound,
-          }}
+          markers={markers}
         />
       </div>
     );
